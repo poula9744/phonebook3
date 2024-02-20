@@ -60,6 +60,10 @@ public class PhonebookController extends HttpServlet {
 			//db에 저장
 			phoneDao.personInsert(personVo);
 			
+			//리다이렉트: 엔터효과를 낸다
+			response.sendRedirect("http://localhost:8080/phonebook3/pbc?action=list");
+			
+			/*
 			//db에서 전체 데이터 가져오기
 			List<PersonVo> personList = phoneDao.personSelect();
 			System.out.println(personList);
@@ -70,11 +74,74 @@ public class PhonebookController extends HttpServlet {
 			//jsp 한테 html그리기 응답해라 --> 포워드
 			RequestDispatcher rd = request.getRequestDispatcher("/list.jsp");
 			rd.forward(request, response);
+			*/
 			
+		} else if("list".equals(action)) {
+			System.out.println("list: 리스트");
+			
+			//db사용
+			PhoneDao phoneDao = new PhoneDao();
+			
+			//리스트 가져오기
+			List<PersonVo> personList = phoneDao.personSelect();
+			System.out.println(personList);
+			
+			//데이터 담기 --> 포워드
+			request.setAttribute("personList", personList);
+			RequestDispatcher rd = request.getRequestDispatcher("/list.jsp");
+			rd.forward(request, response);
+			
+		} else if("delete".equals(action)) {
+			System.out.println("delete: 삭제");
+			int no = Integer.parseInt(request.getParameter("no"));
+			System.out.println(no);
+			
+			//db사용
+			PhoneDao phoneDao = new PhoneDao();
+			
+			//삭제
+			phoneDao.personDelete(no);
+			
+			//리다이렉트
+			response.sendRedirect("/phonebook3/pbc?action=list");
+		} else if("uform".equals(action)) {
+			System.out.println("uform: 수정폼");
+			
+			int no = Integer.parseInt(request.getParameter("no"));
+			System.out.println(no);
+			
+			//jsp 한테 html그리기 응답해라 --> 포워드
+			RequestDispatcher rd = request.getRequestDispatcher("/updateForm.jsp");
+			rd.forward(request, response);
+			
+			
+
+		} else if("update".equals(action)) {
+			System.out.println("update: 수정");
+			
+			
+			int no = Integer.parseInt(request.getParameter("no"));
+			String name = request.getParameter("name");
+			String hp = request.getParameter("hp");
+			String company = request.getParameter("company");
+			
+			System.out.println(name);
+			System.out.println(hp);
+			System.out.println(company);
+			
+			
+			
+			//db관련 업무
+			PhoneDao phoneDao = new PhoneDao();
+			
+			//db에 저장
+			phoneDao.personUpdate(no, name, hp, company);
+			
+			//리다이랙트
+			response.sendRedirect("http://localhost:8080/phonebook3/pbc?action=list");
+	
 		}
-		
-		
-		
+
 	}
 
 	
