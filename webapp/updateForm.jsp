@@ -33,21 +33,21 @@
 	</p>
 	<form action="/phonebook3/pbc" method="get">
 		
-		<input type="text" name="no" value="<%=no %>">
+		<input type="text" name="no" value="${requestScope.personVo.no}">
 	
 		<div>
 			<label>이름(name)</label>
-			<input type="text" name="name" value="<%=name %>">
+			<input type="text" name="name" value="${requestScope.personVo.name}">
 		</div>
 		
 		<div>
 			<label>핸드폰(hp)</label>
-			<input type="text" name="hp" value="<%=hp %>">
+			<input type="text" name="hp" value="${requestScope.personVo.hp}">
 		</div>
 		
 		<div>
 			<label>회사(company)</label>
-			<input type="text" name="company" value="<%=company %>">
+			<input type="text" name="company" value="${requestScope.personVo.company}">
 		</div>
 		
 		<input type="hidden" name="action" value="update">

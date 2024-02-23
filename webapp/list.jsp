@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.javaex.vo.PersonVo" %>
 
@@ -24,39 +25,37 @@
 	등록된 전화번호 리스트입니다.
 </p>
 
-<% 
-for(int i=0; i<personList.size(); i++){%>
+<c:forEach items="${requestScope.personList}" var="personVo">
 
 <table border="1">
 	<tr>
 		<th>이름(name)</th>
-		<td><%=personList.get(i).getName()%></td>
+		<td>${personVo.name}</td>
 	</tr>
 	<tr>
 		<th>핸드폰(hp)</th>
-		<td><%=personList.get(i).getHp()%></td>
+		<td>${personVo.hp}</td>
 	</tr>
 	<tr>
 		<th>회사(company)</th>
-		<td><%=personList.get(i).getCompany()%></td>
+		<td>${personVo.company}</td>
 	</tr>
 	
 	<tr>
 		<td>
-			<a href="/phonebook3/pbc?action=delete&no=<%=personList.get(i).getPersonId() %>">[삭제]</a>
+			<a href="/phonebook3/pbc?action=delete&no=${personVo.personId}">[삭제]</a>
 		</td>
 		
 		<td>
-			<a href="/phonebook3/pbc?action=uform&no=<%=personList.get(i).getPersonId()%>&name=<%=personList.get(i).getName()%>&hp=<%=personList.get(i).getHp()%>&company=<%=personList.get(i).getCompany()%>">
-			[수정]</a></td>
+			<a href="/phonebook3/pbc?action=uform&no=${personVo.personId}&name=${personVo.name}&hp=${personVo.hp}&company=${personVo.company}">
+			[수정]</a>
+		</td>
 	</tr>
 
 </table>
 <br>
 
-<%
-}
-%>
+</c:forEach>
 
 </body>
 </html>

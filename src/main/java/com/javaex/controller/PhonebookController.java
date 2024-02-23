@@ -14,9 +14,6 @@ import com.javaex.dao.PhoneDao;
 import com.javaex.util.WebUtil;
 import com.javaex.vo.PersonVo;
 
-/**
- * Servlet implementation class PhonebookController
- */
 @WebServlet("/pbc")
 public class PhonebookController extends HttpServlet {
 
