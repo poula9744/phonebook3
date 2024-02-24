@@ -116,6 +116,10 @@ public class PhonebookController extends HttpServlet {
 
 			int no = Integer.parseInt(request.getParameter("no"));
 			System.out.println(no);
+			
+			PhoneDao phoneDao = new PhoneDao();
+			PersonVo personVo = (PersonVo) phoneDao.personSelect2(no);
+			System.out.println(personVo);
 
 			// jsp 한테 html그리기 응답해라 --> 포워드
 			WebUtil.forward(request, response, "/updateForm.jsp");
