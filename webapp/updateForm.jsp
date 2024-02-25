@@ -5,16 +5,6 @@
 <%@ page import="com.javaex.dao.PhoneDao" %>
 <%@ page import="java.util.List" %>
     
-<%
-	int no = Integer.parseInt(request.getParameter("no"));
-	String name = request.getParameter("name");
-	String hp = request.getParameter("hp");
-	String company = request.getParameter("company");
-
-	List<PersonVo> personList = (List<PersonVo>)request.getAttribute("personList");
-	System.out.println(personList);
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
