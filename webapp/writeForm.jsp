@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +38,7 @@
 		<button type="submit">등록</button>
 	</form>
 	
-	<a href="http://localhost:8080/phonebook3/pbc?action=list">리스트페이지 바로가기</a>
+	<a href="http://localhost:8080/phonebook5/pbc?action=list">리스트페이지 바로가기</a>
 	
 </body>
 </html>
